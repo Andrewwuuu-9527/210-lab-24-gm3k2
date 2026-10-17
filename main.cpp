@@ -1,9 +1,9 @@
-// COMSC-210 | Lab 23 | Andrew
+// COMSC-210 | Lab 24 | Andrew
 #include <iostream>
 
 #include <fstream>
 
-#include <list>
+#include <set>
 
 #include <string>
 
@@ -42,7 +42,7 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    list < Goat > trip;
+    set < Goat > trip;
     bool again = true;
     while (again) {
         int choice = main_menu();
