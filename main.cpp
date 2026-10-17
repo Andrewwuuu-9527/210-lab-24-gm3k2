@@ -89,7 +89,7 @@ int main_menu() {
 }
 
 // add_goat() randomly generates a goat and inserts it into the set
-void add_goat(set<Goat>& trip, string names[], string colors[]) {
+void add_goat(set < Goat > & trip, string names[], string colors[]) {
     string n = names[rand() % SZ_NAMES];
     int a = rand() % (MAX_AGE + 1);
     string c = colors[rand() % SZ_COLORS];
@@ -102,7 +102,7 @@ void add_goat(set<Goat>& trip, string names[], string colors[]) {
 }
 
 // display_trip() shows all goats with numbering
-void display_trip(list < Goat > trip) {
+void display_trip(set < Goat > trip) {
     if (trip.empty()) {
         cout << "No goats in the trip.\n";
         return;
@@ -116,7 +116,7 @@ void display_trip(list < Goat > trip) {
 }
 
 // select_goat() displays goats with index and returns user's choice (1-based)
-int select_goat(set<Goat>& trip) {
+int select_goat(set < Goat > & trip) {
     if (trip.empty()) {
         cout << "No goats to select.\n";
         return -1;
@@ -125,9 +125,9 @@ int select_goat(set<Goat>& trip) {
     // Display goats with numbering
     int count = 1;
     for (auto it = trip.begin(); it != trip.end(); ++it) {
-        cout << "[" << count++ << "] " << it->get_name()
-             << " (" << it->get_age() << ", "
-             << it->get_color() << ")\n";
+        cout << "[" << count++ << "] " << it -> get_name() <<
+            " (" << it -> get_age() << ", " <<
+            it -> get_color() << ")\n";
     }
 
     int choice;
@@ -135,7 +135,7 @@ int select_goat(set<Goat>& trip) {
     while (!valid) {
         cout << "Select a goat: ";
         cin >> choice;
-        if (cin.fail() || choice < 1 || choice > (int)trip.size()) {
+        if (cin.fail() || choice < 1 || choice > (int) trip.size()) {
             cin.clear();
             cin.ignore(10000, '\n');
             cout << "Invalid. Enter 1-" << trip.size() << ".\n";
@@ -147,7 +147,7 @@ int select_goat(set<Goat>& trip) {
 }
 
 // delete_goat() removes the goat at the chosen index
-void delete_goat(set<Goat>& trip) {
+void delete_goat(set < Goat > & trip) {
     int choice = select_goat(trip);
     if (choice == -1) return;
 
@@ -156,6 +156,6 @@ void delete_goat(set<Goat>& trip) {
     for (int i = 1; i < choice; ++i)
         ++it;
 
-    cout << "Removed: " << it->get_name() << "\n";
+    cout << "Removed: " << it -> get_name() << "\n";
     trip.erase(it);
 }
